@@ -183,7 +183,7 @@
                 to="/Ch04EventHandlingWatch/Exam01EventHandling"
                 class="nav-link"
               >
-                Exam01EventHandling: 이벤트 핸들링
+                Exam01EventHandling: 이벤트 처리
               </RouterLink>
             </li>
 
