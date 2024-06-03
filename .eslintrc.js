@@ -14,5 +14,6 @@ module.exports = {
     "no-unused-vars": "off",
     "vue/multi-word-component-names": "off",
     //"vue/no-parsing-error": "off",
+    "no-constant-condition": "off",
   },
 };

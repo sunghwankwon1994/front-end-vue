@@ -3,6 +3,10 @@ import HomeView from "../views/HomeView.vue";
 import Ch02ComponentRouting from "@/router/Ch02ComponentRouting";
 import Ch03DataBinding from "@/router/Ch03DataBinding";
 import Ch04EventHandlingWatch from "@/router/Ch04EventHandlingWatch";
+import Ch05DataDelivery from "@/router/Ch05DataDelivery";
+import Ch06LifecycleHook from "@/router/Ch06LifecycleHook";
+import Ch07VuexStateManagment from "@/router/Ch07VuexStateManagment";
+import Ch08RestAPI from "@/router/Ch08RestAPI";
 const routes = [
   {
     path: "/",
@@ -20,6 +24,10 @@ const routes = [
   ...Ch02ComponentRouting,
   ...Ch03DataBinding,
   ...Ch04EventHandlingWatch,
+  ...Ch05DataDelivery,
+  ...Ch06LifecycleHook,
+  ...Ch07VuexStateManagment,
+  ...Ch08RestAPI,
 ];
 
 const router = createRouter({
