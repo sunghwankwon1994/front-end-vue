@@ -6,6 +6,12 @@ import router from "./router";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./store";
+import axiosConfig from "./apis/axiosConfig";
+
+//브라우저 재실행시 인증 정보를 가져오기
+//인증 정보를 store에 저장
+store.dispatch("loadAuth"); //비동기
+//-------------------------------------------
 
 //App 컴포넌트를 <div id="app"></div>에 내용으로 추가
 createApp(App).use(store).use(router).mount("#app");

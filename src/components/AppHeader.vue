@@ -5,12 +5,31 @@
       <span class="ms-2 text-white">Vue.js</span>
     </div>
     <div class="me-2">
-      <button class="btn btn-success btn-sm">로그인</button>
+      <div v-if="$store.state.userId === ''">
+        <RouterLink to="/Ch08RestAPI/Exam03Login" class="btn btn-success btn-sm"
+          >로그인</RouterLink
+        >
+      </div>
+      <div v-else>
+        <span class="me-3">User ID: {{ $store.state.userId }}</span>
+        <button class="btn btn-info btn-sm" @click="handleLogout">
+          로그아웃
+        </button>
+      </div>
     </div>
   </nav>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+const store = useStore();
+const router = useRouter();
+
+const handleLogout = () => {
+  store.dispatch("deleteAuth");
+  router.push("/Ch08RestAPI/Exam03Login");  
+};
+</script>
 
 <style scoped></style>
-
