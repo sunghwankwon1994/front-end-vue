@@ -3,7 +3,11 @@
     <div class="card-header">BoardList</div>
     <div class="card-body">
       <div class="mb-3" v-if="$store.state.userId !== ''">
-        <RouterLink to="/Ch08RestAPI/Exam04Board/BoardWrite" class="btn btn-success btn-sm">글쓰기</RouterLink>
+        <RouterLink
+          to="/Ch08RestAPI/Exam04Board/BoardWrite"
+          class="btn btn-success btn-sm"
+          >글쓰기</RouterLink
+        >
       </div>
 
       <table class="table table-striped table-bordered">
@@ -18,7 +22,10 @@
           <tr v-for="board in page.boards" :key="board.bno">
             <td class="text-center">{{ board.bno }}</td>
             <td>
-              <RouterLink to="/">{{ board.btitle }}</RouterLink>
+              <RouterLink
+                :to="`/Ch08RestAPI/Exam04Board/BoardRead?bno=${board.bno}&pageNo=${pageNo}`"
+                >{{ board.btitle }}</RouterLink
+              >
             </td>
             <td class="text-center">{{ board.bwriter }}</td>
             <td class="text-center">{{ board.bdate }}</td>
@@ -88,7 +95,7 @@ const page = ref({
 //GET 방식으로 전달된 파라미터 값얻기
 //http://localhsot/Exam04Board/BoardList?pageNo=2
 const route = useRoute();
-const pageNo = route.query.pageNo || 1;
+const pageNo = ref(route.query.pageNo || 1);
 
 //게시물 목록을 가져오는 메소드 정의
 async function getBoardList(pageNo) {
@@ -102,7 +109,7 @@ async function getBoardList(pageNo) {
 }
 
 //게시물 목록 가져오기
-getBoardList(pageNo);
+getBoardList(pageNo.value);
 
 //페이저의 버튼을 클릭했을 때 해당 페이지로 이동하는 메소드 정의
 const router = useRouter();
@@ -114,8 +121,10 @@ function changePageNo(argPageNo) {
 watch(route, (newRoute, oldRoute) => {
   if (newRoute.query.pageNo) {
     getBoardList(newRoute.query.pageNo);
+    pageNo.value = newRoute.query.pageNo;
   } else {
     getBoardList(1);
+    pageNo.value = 1;
   }
 });
 </script>

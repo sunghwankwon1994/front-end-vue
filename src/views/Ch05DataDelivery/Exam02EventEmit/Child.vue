@@ -45,7 +45,7 @@ const emit = defineEmits([
 ]);
 
 function handleChildEvent2() {
-  emit("child-event-2", data1.value, data2.value);
+  emit(  data1.value, data2.value);
 }
 function handleIncrementEvent() {
   //자식 -> 부모
